@@ -7,7 +7,7 @@ import exp from "constants";
 
 // Constants
 const app = express();
-const port = 6969;
+const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
