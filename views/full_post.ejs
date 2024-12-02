@@ -1,0 +1,53 @@
+<%
+if(locals.post){
+    locals.post.date = new Date(locals.post.date);
+}
+%>
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blogtech</title>
+
+        <%- include("./partials/static_includes.ejs") %>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <%- include("./partials/header.ejs", {page: "None"}) %>
+        
+        <!-- Main Content -->
+
+
+        <main class="container font-domine mb-3 justify-content-center align-items-center border border-dark">
+            <% if(locals.post){ %>
+                <div class="row featurette justify-content-center">
+                    <div class="col-auto border-bottom d-lg-block my-5">
+                        <img src=<%= post.image %> alt="Image for post" class="img-fluid p-5">
+                    </div>
+                    <div class="col-md-7 my-5 border-bottom w-auto p-5">
+                        <h1 class="featurette-heading fw-bolder"><%= post.title %></h1>
+                        <p class="text-muted fs-4">Category: <%= post.category %></p>
+                        <p class="text-muted fs-4">Date: <%= `${post.date.toLocaleString('default', { month: 'short'})} ${post.date.getDate()}` %></p>
+                        <p class="text-muted fs-4">Author: <%= post.author %></p>
+                    </div>
+                </div>
+                <div class="row featurette justify-content-center mx-5 w-100">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 my-5">
+                        <p class="lead fs-5"><%= post.content %></p>
+                    </div>
+                </div>
+            <% } else { %>
+                <h1>Error!! No Post Found! Return to Home page and select a post from there!</h1>
+            <% } %>
+        </main>
+
+        <!-- Create a Post Link -->
+        <%- include("./partials/create_post.ejs") %>
+        
+        <!-- Footer -->
+        <%- include("./partials/footer.ejs") %>
+    </body>
+</html>

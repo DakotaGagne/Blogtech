@@ -1,0 +1,27 @@
+<% 
+if(!locals.page){
+    let page = "Home";
+}
+%>
+
+<div class="container font-domine">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-journal-richtext" viewBox="0 0 16 16">
+                <path d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+            </svg>
+        <div class="fs-1 fw-bold">Blogtech</div>
+        </a>
+
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item"><a href="/" class="nav-link fw-bold <%= page=="Home"?"active":"none" %> "    aria-current=<%= page=="Home"?"page":"false" %>>Home</a></li>
+            <li class="nav-item"><a href="/all" class="nav-link fw-bold <%= page=="All"?"active":"none" %> "     aria-current=<%= page=="All"?"page":"false" %>>All Posts</a></li>
+            <li class="nav-item"><a href="/tech" class="nav-link fw-bold <%= page=="Tech"?"active":"none" %> "    aria-current=<%= page=="Tech"?"page":"false" %>>Tech</a></li>
+            <li class="nav-item"><a href="/science" class="nav-link fw-bold <%= page=="Science"?"active":"none" %> " aria-current=<%= page=="Science"?"page":"false" %>>Science</a></li>
+            <li class="nav-item"><a href="/nature" class="nav-link fw-bold <%= page=="Nature"?"active":"none" %> "  aria-current=<%= page=="Nature"?"page":"false" %>>Nature</a></li>
+            <li class="nav-item"><a href="/create" class="nav-link fw-bold <%= page=="Create"?"active":"none" %> "  aria-current=<%= page=="Create"?"page":"false" %>>Create A Post</a></li>
+        </ul>
+    </header>
+</div>

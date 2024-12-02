@@ -1,0 +1,87 @@
+<% 
+if(!locals.post1 || !locals.post2){
+    let post1 = {
+        title: "Post Title",
+        author: "John Doe",
+        content: "This is a wider card with supporting text below as a natural lead-in to additional content.",
+        date: "2024-06-10",
+        category: "Nature",
+        image: "./assets/nature1.jpg"
+    }
+    let post2 = {
+        title: "Post Title",
+        author: "Jane Doe",
+        content: "This is a wider card with supporting text below as a natural lead-in to additional content.",
+        date: "2024-06-10",
+        category: "Science",
+        image: "./assets/science1.jpg"
+    }
+}
+post1.date = new Date(post1.date);
+post2.date = new Date(post2.date);
+let postCharLim = 125;
+%>
+
+
+
+<div class="row mb-2 font-domine">
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success-emphasis"><%= `${post1.category}` %></strong>
+                <h3 class="mb-0"><%= post1.title %></h3>
+                <div class="mb-1 text-body-secondary"><%= `${post1.date.toLocaleString('default', { month: 'short'})} ${post1.date.getDate()} | ${post1.author}` %></div>
+                <p class="card-text mb-auto">
+                    <% if(post1.content.length <= postCharLim){ %>
+                        <%= post1.content %>
+                    <% } else { %>
+                        <%= post1.content.slice(0, postCharLim) + "..." %>
+                    <% } %>
+
+                </p>
+                <form action="/full_post" method="POST">
+                    <input type="hidden" name="uid" value="<%= post1.uid %>">
+                    <a onClick="this.parentNode.submit();" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </a>
+                </form>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src=<%= post1.image %> alt="Image for post" class="img-fluid w-100 h-100">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-success-emphasis"><%= post2.category %></strong>
+                <h3 class="mb-0"><%= post2.title %></h3>
+                <div class="mb-1 text-body-secondary"><%= `${post2.date.toLocaleString('default', { month: 'short'})} ${post2.date.getDate()} | ${post2.author}`%></div>
+                <p class="card-text mb-auto">
+                    <% if(post2.content.length <= postCharLim){ %>
+                        <%= post2.content %>
+                    <% } else { %>
+                        <%= post2.content.slice(0, postCharLim) + "..." %>
+                    <% } %>
+
+                </p>
+                <form action="/full_post" method="POST">
+                    <input type="hidden" name="uid" value="<%= post2.uid %>">
+                    <a onClick="this.parentNode.submit();" class="icon-link gap-1 icon-link-hover stretched-link">
+                        Continue reading
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                        </svg>
+                    </a>
+                </form>
+            </div>
+            <div class="col-auto d-none d-lg-block">
+                <img src=<%= post2.image %> alt="Image for post" class="img-fluid w-100 h-100">
+            </div>
+        </div>
+    </div>
+</div>
