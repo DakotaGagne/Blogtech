@@ -2,13 +2,15 @@
 let desc = "Post Submitted Successfully! Navigate to the home page to see it featured there!";
 if(!locals.submitted){
     desc = "Have some cool knowledge about Science, Tech, or Nature? A burning opinion you need to share? Enter it here and share it with the world!";
-}
-
+}  
+if(!locals.colorMode){
+   let colorMode = "light";
+} 
 %>
 
 
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="<%= colorMode %>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +21,7 @@ if(!locals.submitted){
 
     <body>
         <!-- Header -->
-        <%- include("./partials/header.ejs", {page: "Create"}) %>
+        <%- include("./partials/header.ejs", {page:"Create", colorMode:colorMode}) %>
         
 
         <!-- Main Content (Create Post Form) -->

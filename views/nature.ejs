@@ -1,5 +1,13 @@
+<%
+   
+if(!locals.colorMode){
+   let colorMode = "light";
+}   
+   
+%>
+
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="<%= colorMode %>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +18,7 @@
 
     <body>
         <!-- Header -->
-        <%- include("./partials/header.ejs", {page:"Nature"}) %>
+        <%- include("./partials/header.ejs", {page:"Nature", colorMode:colorMode}) %>
         
         <!-- Main Content -->
 
@@ -20,7 +28,7 @@
 
         <main class="container font-domine">
             <% if(locals.posts){
-                let postCopy = JSON.parse(JSON.stringify(locals.posts));
+                let postCopy = JSON.parse(JSON.stringify(posts));
                 postCopy = postCopy.filter(post => post.category == "Nature");
             %>
 

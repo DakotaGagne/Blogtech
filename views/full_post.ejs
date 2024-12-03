@@ -1,11 +1,14 @@
 <%
-if(locals.post){
-    locals.post.date = new Date(locals.post.date);
+if(!locals.post){
+   let post = "Null";
+}
+if(!locals.colorMode){
+   let colorMode = "light";
 }
 %>
 
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="<%= colorMode %>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +19,13 @@ if(locals.post){
 
     <body>
         <!-- Header -->
-        <%- include("./partials/header.ejs", {page: "None"}) %>
+        <%- include("./partials/header.ejs", {page:"None", colorMode:colorMode, post:post}) %>
         
         <!-- Main Content -->
 
 
         <main class="container font-domine mb-3 justify-content-center align-items-center border border-dark">
-            <% if(locals.post){ %>
+            <% if(post != "Null" && post){ %>
                 <div class="row featurette justify-content-center">
                     <div class="col-auto border-bottom d-lg-block my-5">
                         <img src=<%= post.image %> alt="Image for post" class="img-fluid p-5">
@@ -30,7 +33,7 @@ if(locals.post){
                     <div class="col-md-7 my-5 border-bottom w-auto p-5">
                         <h1 class="featurette-heading fw-bolder"><%= post.title %></h1>
                         <p class="text-muted fs-4">Category: <%= post.category %></p>
-                        <p class="text-muted fs-4">Date: <%= `${post.date.toLocaleString('default', { month: 'short'})} ${post.date.getDate()}` %></p>
+                        <p class="text-muted fs-4">Date: <%= post.date %></p>
                         <p class="text-muted fs-4">Author: <%= post.author %></p>
                     </div>
                 </div>

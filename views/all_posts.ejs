@@ -1,5 +1,13 @@
+<%
+   
+if(!locals.colorMode){
+   let colorMode = "light";
+}   
+   
+%>
+
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="<%= colorMode %>">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +18,12 @@
 
     <body>
         <!-- Header -->
-        <%- include("./partials/header.ejs", {page:"All"}) %>
-        
+        <% if(locals.post) {%>
+          <%- include("./partials/header.ejs", {page:"All", colorMode:colorMode, post:locals.post}) %>
+        <% } else { %>
+          <%- include("./partials/header.ejs", {page:"All", colorMode:colorMode}) %>
+        <% } %>  
+          
         <!-- Main Content -->
 
         <div class="container border-bottom mb-3">
@@ -20,7 +32,7 @@
 
         <main class="container font-domine">
             <% if(locals.posts){
-                let postCopy = JSON.parse(JSON.stringify(locals.posts));
+                let postCopy = JSON.parse(JSON.stringify(posts));
             %>
 
                 <% while(postCopy.length >= 2) { 

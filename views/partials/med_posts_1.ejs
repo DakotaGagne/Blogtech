@@ -3,12 +3,11 @@ if(!locals.post1){
     let post1 = {
         title: "Post Title",
         content: "This is a wider card with supporting text below as a natural lead-in to additional content.",
-        date: "2024-06-10",
+        date: "Jan 1 1999",
         category: "Nature",
         image: "./assets/nature1.jpg"
     }
 }
-post1.date = new Date(post1.date);
 let postCharLim = 125;
 %>
 
@@ -21,7 +20,7 @@ let postCharLim = 125;
             <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-success-emphasis"><%= post1.category %></strong>
                 <h3 class="mb-0"><%= post1.title %></h3>
-                <div class="mb-1 text-body-secondary"><%= `${post1.date.toLocaleString('default', { month: 'short'})} ${post1.date.getDate()}  | ${post1.author}`%></div>
+                <div class="mb-1 text-body-secondary"><%= `${post1.date}  | ${post1.author}`%></div>
                 <p class="card-text mb-auto">
                     <% if(post1.content.length <= postCharLim){ %>
                         <%= post1.content %>
